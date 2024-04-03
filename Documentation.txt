@@ -1,0 +1,35 @@
+Chroma.py
+
+hsv(col) - Converts a color (col) from RGB scale to HSV
+
+		   col[0], col[1], col[2] should be the B, G , R respectively
+		   This order is made to ensure consistency with OpenCV library.
+
+__________________________________________________
+
+
+class Image
+
+init(data) -		Creates a virtual image 
+					data is the 3D array of the image
+
+					The dimensions are x, y coordinate and color(in BGR) respectively
+					OpenCV stores it in a COLUMN MAJOR form
+					This function is consistent with that format only.
+
+dimensions() - 		Calculates the dimensions of the given image
+
+toHSV() - 			Converts entire image to HSV scale pixelwise
+
+components() - 		Extracts the H, S, V components from HSV image
+
+centre() - 			Calculates the 'central tendency' of the background color
+
+similar(col) - 		Checks col(in HSV) is 'similar enough' to the central background color or not
+
+chroma(bg=None,		Identifies the background portion of the image by iteratively calling
+col=None, 			similar() pixelwise. If bg is specified, background is replaced by
+overwrite=True)		corresponding pixel in bg. Otherwise if col is specified, background is 
+					replaced with col. If none is specified, bg is replaced with white.
+					If overwrite is True, the original is image is overwritten
+					If overwrite is False, a new image is returned
